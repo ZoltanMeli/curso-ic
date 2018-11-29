@@ -118,12 +118,12 @@ task buildImage(type: DockerBuildImage) {
 }
 // ===== End Docker
 
-def flywayServer = System.properties['flywayServer'] ?: 'localhost'
+def flywayServer = "172.17.0.2" //System.properties['flywayServer'] ?: 'localhost'
 println "flywayServer[$flywayServer]"
 
 flyway {
 	url = "jdbc:sqlserver://$flywayServer:1433;databaseName=demo"
-	user = 'sa'
+	user = 'SA'
 	password = 'Pa$$w0rd1'
 	baselineOnMigrate = true
 	baselineVersion = 0
